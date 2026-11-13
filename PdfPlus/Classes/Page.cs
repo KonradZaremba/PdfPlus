@@ -16,7 +16,7 @@ using Grasshopper.Kernel.Types;
 
 namespace PdfPlus
 {
-    public class Page
+    public partial class Page
     {
 
         #region members

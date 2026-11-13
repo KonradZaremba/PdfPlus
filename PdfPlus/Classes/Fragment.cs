@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PdfPlus
 {
-    public class Fragment : Element
+    public partial class Fragment : Element
     {
 
         #region members

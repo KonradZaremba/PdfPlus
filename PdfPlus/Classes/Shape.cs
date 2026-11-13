@@ -16,7 +16,7 @@ using Pl = PdfSharp.Drawing.Layout;
 
 namespace PdfPlus
 {
-    public class Shape : ObjectAssembly
+    public partial class Shape : ObjectAssembly
     {
 
         #region members
@@ -1145,7 +1145,13 @@ namespace PdfPlus
             frame.Location = new Pd.XPoint(boundary.Corner(0).X, boundary.Corner(3).Y);
             frame.Size = new Pd.XSize(boundary.Width, boundary.Height);
 
+#if BETTA
+            // Published PDFsharp 1.51 has no ChartFrame.Background (the original builds against its own PdfSharp DLLs):
+            // paint the same rectangle behind the chart instead.
+            graph.DrawRectangle(graphic.Color.ToPdfBrush(), new Pd.XRect(frame.Location, frame.Size));
+#else
             frame.Background = graphic.Color.ToPdfBrush();
+#endif
 
             frame.Add(chart);
             frame.Draw(graph);

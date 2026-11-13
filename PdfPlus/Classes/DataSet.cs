@@ -8,7 +8,7 @@ using Sd = System.Drawing;
 
 namespace PdfPlus
 {
-    public class DataSet: Element
+    public partial class DataSet: Element
     {
         #region members
 

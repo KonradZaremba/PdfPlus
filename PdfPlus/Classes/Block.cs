@@ -20,7 +20,7 @@ using System.IO;
 
 namespace PdfPlus
 {
-    public class Block : ObjectAssembly
+    public partial class Block : ObjectAssembly
     {
 
         #region members

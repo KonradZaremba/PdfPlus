@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    PDF+ on Betta: the same PDF engine (PdfPlus\Classes and PdfPlus\Utilities, compiled in from the original project),
+    with the 49 hand-written GH_Components replaced by attributed methods in Components\. Builds a plugin DLL for
+    Rhino 8 + Betta 0.8: copy bin\<config>\net7.0-windows\*.dll into %AppData%\Grasshopper\Libraries\Betta\.
+    Install either this or the original PdfPlus.gha, not both: the components keep the original GUIDs, so existing
+    PDF+ definitions open with this version.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <Nullable>disable</Nullable>
+    <DefineConstants>$(DefineConstants);BETTA</DefineConstants>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>PdfPlus.Betta</AssemblyName>
+    <RootNamespace>PdfPlus</RootNamespace>
+    <Version>2.1.0</Version>
+    <!-- nuget.org is added here so no nuget.config is needed. -->
+    <RestoreSources>$(RestoreSources);https://api.nuget.org/v3/index.json</RestoreSources>
+    <!-- PDFsharp 1.51 (the version the original references; its packages.config still says 1.50) and the MigraDoc extensions target .NET Framework; they run on .NET 7 (Windows, GDI). -->
+    <NoWarn>$(NoWarn);NU1701;CS0168;CS0219;CS0414;CS0162</NoWarn>
+    <!-- Put PDFsharp, MigraDoc and friends next to the DLL: the whole folder goes into Libraries\Betta. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\PdfPlus\Classes\*.cs" Link="Engine\Classes\%(Filename)%(Extension)" />
+    <Compile Include="..\PdfPlus\Utilities\*.cs" Link="Engine\Utilities\%(Filename)%(Extension)" />
+    <!-- The original icons, matched by IconResource = "<file name>". -->
+    <EmbeddedResource Include="..\PdfPlus\Resources\*.png" Link="Icons\%(Filename)%(Extension)" LogicalName="PdfPlus.Icons.%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Betta.Abstractions" Version="0.8.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Betta.Preview" Version="0.8.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Grasshopper" Version="8.3.24009.15001" ExcludeAssets="runtime" />
+    <PackageReference Include="RhinoCommon" Version="8.3.24009.15001" ExcludeAssets="runtime" />
+    <PackageReference Include="PDFsharp-MigraDoc-gdi" Version="1.51.5185-beta" />
+    <PackageReference Include="MigraDoc.Extensions" Version="1.0.1" />
+    <PackageReference Include="MigraDoc.Extensions.Html" Version="1.0.1" />
+    <PackageReference Include="MigraDoc.Extensions.Markdown" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

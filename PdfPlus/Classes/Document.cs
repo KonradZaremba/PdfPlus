@@ -14,7 +14,7 @@ using Md = MigraDoc.DocumentObjectModel;
 
 namespace PdfPlus
 {
-    public class Document : IGH_Goo
+    public partial class Document : IGH_Goo
     {
 
         #region members
