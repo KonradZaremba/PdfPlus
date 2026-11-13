@@ -79,6 +79,15 @@ namespace PdfPlus
 
 namespace PdfPlus.Betta
 {
+    internal static class Startup
+    {
+        // PDFsharp 1.51 writes fonts in Windows-1252, which .NET Framework has built in and .NET 7 only after
+        // registering the code-pages provider. Without it every Save Document throws in Rhino 8.
+        [System.Runtime.CompilerServices.ModuleInitializer]
+        internal static void RegisterCodePages() =>
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+    }
+
     /// <summary>
     /// Betta hands a method the value inside a wire (a Curve, a string, a Shape). PDF+'s converters
     /// (<c>TryGetShape</c>, <c>TryGetFragment</c>, ...) take Grasshopper goo, so this wraps the value back up the way
@@ -91,6 +100,8 @@ namespace PdfPlus.Betta
         {
             if (value == null) return null;
             if (value is IGH_Goo goo) return goo;
+            // PDF+ objects go straight into the wrapper; GH_Convert would first try them as Rhino geometry.
+            if (value is IBettaValue) return new GH_ObjectWrapper(value);
             return GH_Convert.ToGoo(value) ?? new GH_ObjectWrapper(value);
         }
     }
