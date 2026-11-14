@@ -1,6 +1,8 @@
 # PDF +
 PDF composition plugin for Grasshopper 3d
 
+> **This fork** (branch `betta-port`) is an experiment: the same engine with the components rebuilt on [Betta](https://github.com/KonradZaremba/betta). See [PdfPlus.Betta/README.md](PdfPlus.Betta/README.md). Everything below is the original PDF+ README.
+
 _Like PDF+ [Buy me a coffee :D](http://www.buymeacoffee.com/davidmans)_
 
 ---

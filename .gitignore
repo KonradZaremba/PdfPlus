@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 PdfPlus.Betta/bin/
 PdfPlus.Betta/obj/
+PdfPlus.Betta.Tests/bin/
+PdfPlus.Betta.Tests/obj/

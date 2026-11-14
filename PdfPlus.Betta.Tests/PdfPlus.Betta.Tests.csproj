@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Tests for the Betta port. They need Rhino 8 installed: RhinoCommon and Grasshopper load from the install
+    (RhinoSetup.cs), and the PDF tests start Rhino's core in-process, with no window.
+    Run: dotnet test PdfPlus.Betta.Tests
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>11</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <!-- PdfPlus.Betta uses WPF and WinForms types, so the test host needs the Windows Desktop runtime too. -->
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RestoreSources>$(RestoreSources);https://api.nuget.org/v3/index.json</RestoreSources>
+    <NoWarn>$(NoWarn);NU1701;CA2255</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PdfPlus.Betta\PdfPlus.Betta.csproj" />
+
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.6.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <!-- In Rhino these come from Betta's own folder; a test host has to carry them itself. -->
+    <PackageReference Include="Betta.Abstractions" Version="0.8.0" />
+    <PackageReference Include="Betta.Preview" Version="0.8.0" />
+
+    <!-- Compile-time only: the assemblies load from the Rhino 8 install (RhinoSetup.cs). -->
+    <PackageReference Include="RhinoCommon" Version="8.3.24009.15001" ExcludeAssets="runtime" />
+    <PackageReference Include="Grasshopper" Version="8.3.24009.15001" ExcludeAssets="runtime" />
+
+    <!-- To read the saved PDFs back. -->
+    <PackageReference Include="PDFsharp-MigraDoc-gdi" Version="1.51.5185-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
