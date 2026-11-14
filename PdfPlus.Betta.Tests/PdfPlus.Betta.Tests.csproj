@@ -44,6 +44,8 @@
 
   <ItemGroup>
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    <!-- What the PDF+ 2.1 components registered; PortContractTests checks the port against it. -->
+    <Content Include="original-contract.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

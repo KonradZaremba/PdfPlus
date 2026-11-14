@@ -5,17 +5,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
+using System.Text.Json;
 using System.Threading;
 using Xunit;
 
 namespace PdfPlus.Betta.Tests
 {
     /// <summary>
-    /// The port has to look the same as PDF+ to a Grasshopper user and to a saved .gh file: the same components, IDs,
-    /// names, toolbar tabs, inputs and outputs. These tests read the original components' C# source
-    /// (PdfPlus/Components) and compare it with what Betta publishes from PdfPlus.Betta's attributes.
+    /// PDF+ on Betta has to look the same as PDF+ 2.1 to a Grasshopper user and to a saved .gh file: the same
+    /// components, IDs, names, toolbar tabs, inputs and outputs. original-contract.json records what the 48 hand-written
+    /// GH_Components of PDF+ 2.1 registered, read from their C# source before they were removed (branch betta-port,
+    /// commit 4b78ff9). These tests compare it with what Betta publishes from PdfPlus.Betta's attributes.
     /// No Rhino core needed.
     /// </summary>
     public class PortContractTests
@@ -167,159 +167,34 @@ namespace PdfPlus.Betta.Tests
                 (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IProgress<>));
         }
 
-        /// <summary>One hand-written PDF+ GH_Component, read from its C# source.</summary>
+        /// <summary>One hand-written PDF+ 2.1 GH_Component, as original-contract.json records it.</summary>
         private sealed class Original
         {
             public string File;
             public Guid Guid;
             public string Name, NickName, Category, SubCategory;
-            public List<(string Name, string NickName)> Inputs = new List<(string, string)>();
-            public List<(string Name, string NickName)> Outputs = new List<(string, string)>();
+            public List<(string Name, string NickName)> Inputs;
+            public List<(string Name, string NickName)> Outputs;
 
             public static IReadOnlyList<Original> ReadAll()
             {
-                string components = Path.Combine(RepoRoot(), "PdfPlus", "Components");
-                var result = new List<Original>();
-                foreach (string file in Directory.GetFiles(components, "*.cs", SearchOption.AllDirectories))
+                string path = Path.Combine(AppContext.BaseDirectory, "original-contract.json");
+                using JsonDocument doc = JsonDocument.Parse(System.IO.File.ReadAllText(path));
+                return doc.RootElement.EnumerateArray().Select(e => new Original
                 {
-                    // PDF+ keeps some unfinished parameters as commented-out registrations (Author, Keywords, ...).
-                    string src = StripComments(System.IO.File.ReadAllText(file));
-                    if (!src.Contains("ComponentGuid") || Regex.IsMatch(src, @"\babstract\s+class\b")) continue;
-
-                    var o = new Original { File = Path.GetRelativePath(components, file) };
-                    o.Guid = Guid.Parse(Regex.Match(src, @"ComponentGuid[\s\S]*?new Guid\(""([0-9a-fA-F-]+)""\)").Groups[1].Value);
-
-                    List<string> baseArgs = Args(src, src.IndexOf("base(", StringComparison.Ordinal) + 4);
-                    o.Name = Eval(baseArgs[0]);
-                    o.NickName = Eval(baseArgs[1]);
-                    o.Category = Eval(baseArgs[3]);
-                    o.SubCategory = Eval(baseArgs[4]);
-
-                    int inputs = src.IndexOf("RegisterInputParams", StringComparison.Ordinal);
-                    int outputs = src.IndexOf("RegisterOutputParams", StringComparison.Ordinal);
-                    int solve = src.IndexOf("SolveInstance", outputs, StringComparison.Ordinal);
-                    o.Inputs = Registrations(src, inputs, outputs);
-                    o.Outputs = Registrations(src, outputs, solve < 0 ? src.Length : solve);
-                    result.Add(o);
-                }
-                return result.OrderBy(o => o.Name).ToList();
+                    File = e.GetProperty("file").GetString(),
+                    Guid = e.GetProperty("guid").GetGuid(),
+                    Name = e.GetProperty("name").GetString(),
+                    NickName = e.GetProperty("nickName").GetString(),
+                    Category = e.GetProperty("category").GetString(),
+                    SubCategory = e.GetProperty("subCategory").GetString(),
+                    Inputs = Params(e.GetProperty("inputs")),
+                    Outputs = Params(e.GetProperty("outputs")),
+                }).ToList();
             }
 
-            // pManager.AddXParameter("Name", "Nick", ...) or pManager.AddParameter(param, "Name", "Nick", ...).
-            private static List<(string, string)> Registrations(string src, int from, int to)
-            {
-                var list = new List<(string, string)>();
-                foreach (Match m in Regex.Matches(src.Substring(from, to - from), @"pManager\.(Add\w*)\("))
-                {
-                    List<string> args = Args(src, from + m.Index + m.Length - 1);
-                    int first = m.Groups[1].Value == "AddParameter" ? 1 : 0;
-                    list.Add((Eval(args[first]), Eval(args[first + 1])));
-                }
-                return list;
-            }
-
-            private static string RepoRoot()
-            {
-                for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null; dir = dir.Parent)
-                    if (Directory.Exists(Path.Combine(dir.FullName, "PdfPlus", "Components"))) return dir.FullName;
-                throw new DirectoryNotFoundException("PdfPlus/Components not found above " + AppContext.BaseDirectory);
-            }
-
-            /// <summary>The source without // and /* */ comments; string literals (URLs in descriptions) are left alone.</summary>
-            private static string StripComments(string src)
-            {
-                var sb = new StringBuilder(src.Length);
-                for (int i = 0; i < src.Length; i++)
-                {
-                    char c = src[i];
-                    char next = i + 1 < src.Length ? src[i + 1] : '\0';
-                    if (c == '/' && next == '/')
-                    {
-                        while (i < src.Length && src[i] != '\n') i++;
-                        sb.Append('\n');
-                    }
-                    else if (c == '/' && next == '*')
-                    {
-                        i += 2;
-                        while (i + 1 < src.Length && !(src[i] == '*' && src[i + 1] == '/')) i++;
-                        i++;
-                    }
-                    else if (c == '"')
-                    {
-                        bool verbatim = i > 0 && src[i - 1] == '@';
-                        sb.Append(c);
-                        for (i++; i < src.Length; i++)
-                        {
-                            sb.Append(src[i]);
-                            if (!verbatim && src[i] == '\\' && i + 1 < src.Length) { sb.Append(src[++i]); continue; }
-                            if (src[i] == '"')
-                            {
-                                if (verbatim && i + 1 < src.Length && src[i + 1] == '"') { sb.Append(src[++i]); continue; }
-                                break;
-                            }
-                        }
-                    }
-                    else sb.Append(c);
-                }
-                return sb.ToString();
-            }
-
-            /// <summary>The comma-separated arguments of the call whose '(' is at <paramref name="open"/>.</summary>
-            private static List<string> Args(string src, int open)
-            {
-                var args = new List<string>();
-                var current = new StringBuilder();
-                int depth = 0;
-                for (int i = open + 1; i < src.Length; i++)
-                {
-                    char c = src[i];
-                    if (c == '"')
-                    {
-                        bool verbatim = i > 0 && src[i - 1] == '@';
-                        int start = i++;
-                        while (i < src.Length)
-                        {
-                            if (!verbatim && src[i] == '\\') { i += 2; continue; }
-                            if (src[i] == '"')
-                            {
-                                if (verbatim && i + 1 < src.Length && src[i + 1] == '"') { i += 2; continue; }
-                                break;
-                            }
-                            i++;
-                        }
-                        current.Append(src, start, i - start + 1);
-                        continue;
-                    }
-                    if (c == '(' || c == '[' || c == '{') depth++;
-                    else if (c == ')' || c == ']' || c == '}')
-                    {
-                        if (depth == 0) { args.Add(current.ToString().Trim()); return args; }
-                        depth--;
-                    }
-                    else if (c == ',' && depth == 0) { args.Add(current.ToString().Trim()); current.Clear(); continue; }
-                    current.Append(c);
-                }
-                throw new FormatException("Unclosed call at " + open);
-            }
-
-            /// <summary>A string literal, a concatenation of them, or a PDF+ Constants member such as Constants.Block.Name.</summary>
-            private static string Eval(string expr)
-            {
-                expr = expr.Trim();
-                if (expr.StartsWith("@\"", StringComparison.Ordinal))
-                    return expr.Substring(2, expr.Length - 3).Replace("\"\"", "\"");
-                if (expr.StartsWith("\"", StringComparison.Ordinal) && expr.EndsWith("\"", StringComparison.Ordinal) && !expr.Contains("\" +"))
-                    return Regex.Unescape(expr.Substring(1, expr.Length - 2));
-                if (expr.Contains("+"))
-                    return string.Concat(Regex.Split(expr, @"\+(?=(?:[^""]*""[^""]*"")*[^""]*$)").Select(Eval));
-
-                Match member = Regex.Match(expr, @"^Constants\.(\w+)(?:\.(\w+))?$");
-                if (!member.Success) return expr;
-                object value = typeof(Constants).GetProperty(member.Groups[1].Value, BindingFlags.Public | BindingFlags.Static)?.GetValue(null);
-                if (member.Groups[2].Success && value != null)
-                    value = value.GetType().GetProperty(member.Groups[2].Value)?.GetValue(value);
-                return value?.ToString() ?? expr;
-            }
+            private static List<(string Name, string NickName)> Params(JsonElement list) =>
+                list.EnumerateArray().Select(p => (p.GetProperty("name").GetString(), p.GetProperty("nickName").GetString())).ToList();
         }
     }
 }

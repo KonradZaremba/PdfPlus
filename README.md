@@ -1,7 +1,9 @@
 # PDF +
 PDF composition plugin for Grasshopper 3d
 
-> **This fork** (branch `betta-port`) is an experiment: the same engine with the components rebuilt on [Betta](https://github.com/KonradZaremba/betta). See [PdfPlus.Betta/README.md](PdfPlus.Betta/README.md). Everything below is the original PDF+ README.
+> **This fork is PDF+ 3 on [Betta](https://github.com/KonradZaremba/betta)**, unofficial: the PDF+ 2.1 engine with its 48 components rebuilt as plain C# methods, for Rhino 8. Definitions saved with PDF+ 2.1 still open. How to build, install and test it, and what changed: [PdfPlus.Betta/README.md](PdfPlus.Betta/README.md). Branch `betta-port` keeps the 2.1 components next to the port. Everything below the picture is the original PDF+ README.
+>
+> ![PDF+ 3 on Betta: the same 48 Grasshopper components in 28% of the code](media/pdfplus-3-on-betta.png)
 
 _Like PDF+ [Buy me a coffee :D](http://www.buymeacoffee.com/davidmans)_
 

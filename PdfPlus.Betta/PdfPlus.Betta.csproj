@@ -1,22 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    PDF+ on Betta: the same PDF engine (PdfPlus\Classes and PdfPlus\Utilities, compiled in from the original project),
-    with the 49 hand-written GH_Components replaced by attributed methods in Components\. Builds a plugin DLL for
-    Rhino 8 + Betta 0.8: copy bin\<config>\net7.0-windows\*.dll into %AppData%\Grasshopper\Libraries\Betta\.
-    Install either this or the original PdfPlus.gha, not both: the components keep the original GUIDs, so existing
-    PDF+ definitions open with this version.
+    PDF+ 3 on Betta: the PDF+ engine (Engine\) with its 48 Grasshopper components written as attributed methods
+    (Components\). Builds a plugin DLL for Rhino 8 + Betta 0.8: copy bin\<config>\net7.0-windows\*.dll into
+    %AppData%\Grasshopper\Libraries\Betta\. The components keep the GUIDs of PDF+ 2.1, so its definitions open
+    with this version; don't install the PDF+ 2.1 PdfPlus.gha next to it.
   -->
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <LangVersion>11</LangVersion>
     <Nullable>disable</Nullable>
-    <DefineConstants>$(DefineConstants);BETTA</DefineConstants>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>PdfPlus.Betta</AssemblyName>
     <RootNamespace>PdfPlus</RootNamespace>
-    <Version>2.1.0</Version>
+    <Version>3.0.0</Version>
     <!-- nuget.org is added here so no nuget.config is needed. -->
     <RestoreSources>$(RestoreSources);https://api.nuget.org/v3/index.json</RestoreSources>
     <!-- PDFsharp 1.51 (the version the original references; its packages.config still says 1.50) and the MigraDoc extensions target .NET Framework; they run on .NET 7 (Windows, GDI). -->
@@ -27,10 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\PdfPlus\Classes\*.cs" Link="Engine\Classes\%(Filename)%(Extension)" />
-    <Compile Include="..\PdfPlus\Utilities\*.cs" Link="Engine\Utilities\%(Filename)%(Extension)" />
-    <!-- The original icons, matched by IconResource = "<file name>". -->
-    <EmbeddedResource Include="..\PdfPlus\Resources\*.png" Link="Icons\%(Filename)%(Extension)" LogicalName="PdfPlus.Icons.%(Filename)%(Extension)" />
+    <!-- The PDF+ icons, matched by IconResource = "<file name>". -->
+    <EmbeddedResource Include="Icons\*.png" LogicalName="PdfPlus.Icons.%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>

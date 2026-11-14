@@ -1,0 +1,1449 @@
+[
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_ChartBasic.cs",
+    "guid": "59db45ad-3851-4d74-a6fa-b2007b55cf50",
+    "name": "Basic Chart Block",
+    "nickName": "Cht Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      },
+      {
+        "name": "Type",
+        "nickName": "T"
+      },
+      {
+        "name": "X Axis",
+        "nickName": "X"
+      },
+      {
+        "name": "Y Axis",
+        "nickName": "Y"
+      },
+      {
+        "name": "Grid Lines",
+        "nickName": "G"
+      },
+      {
+        "name": "Legend Location",
+        "nickName": "L"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_ChartBasic.cs",
+    "guid": "65bac445-61d4-472f-8855-e899fc5f5477",
+    "name": "Basic Chart Shape",
+    "nickName": "Cht Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      },
+      {
+        "name": "Type",
+        "nickName": "T"
+      },
+      {
+        "name": "X Axis",
+        "nickName": "X"
+      },
+      {
+        "name": "Y Axis",
+        "nickName": "Y"
+      },
+      {
+        "name": "Grid Lines",
+        "nickName": "G"
+      },
+      {
+        "name": "Legend Location",
+        "nickName": "L"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Break.cs",
+    "guid": "c8f9c9fa-6c24-4934-88af-20b0aeb788f9",
+    "name": "Break Block",
+    "nickName": "Brk Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Type",
+        "nickName": "T"
+      },
+      {
+        "name": "Count",
+        "nickName": "C"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_Comment.cs",
+    "guid": "6f487c10-d602-47a0-b4f9-33e3c9dcb82f",
+    "name": "Comment Shape",
+    "nickName": "Comment Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Content",
+        "nickName": "C"
+      },
+      {
+        "name": "Location",
+        "nickName": "P"
+      },
+      {
+        "name": "Title",
+        "nickName": "T"
+      },
+      {
+        "name": "Subject",
+        "nickName": "S"
+      },
+      {
+        "name": "Icon",
+        "nickName": "I"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Create.cs",
+    "guid": "c851d2f0-6304-46ea-89d7-b649b7d27594",
+    "name": "Create Document",
+    "nickName": "Create Doc",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Pages",
+        "nickName": "Pg"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_Add.cs",
+    "guid": "b2b9de5c-523b-4bd7-a1b2-41012b3e1d53",
+    "name": "Create Page",
+    "nickName": "Page",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Frame",
+        "nickName": "F"
+      },
+      {
+        "name": "Units",
+        "nickName": "U"
+      },
+      {
+        "name": "Width",
+        "nickName": "W"
+      },
+      {
+        "name": "Height",
+        "nickName": "H"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_AddRectangle.cs",
+    "guid": "331173ec-eb7d-4c09-851f-87131c6ec061",
+    "name": "Create Page Boundary",
+    "nickName": "Page Rect",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_AddImperial.cs",
+    "guid": "a41b9784-0cd8-46b9-ab0b-759e633d8d48",
+    "name": "Create Page Imperial",
+    "nickName": "Page Imperial",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Frame",
+        "nickName": "F"
+      },
+      {
+        "name": "Type",
+        "nickName": "T"
+      },
+      {
+        "name": "Orientation",
+        "nickName": "O"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_AddMetric.cs",
+    "guid": "60233390-b0a2-4715-899c-bc900b939a0c",
+    "name": "Create Page Metric",
+    "nickName": "Page Metric",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Frame",
+        "nickName": "F"
+      },
+      {
+        "name": "Type",
+        "nickName": "T"
+      },
+      {
+        "name": "Orientation",
+        "nickName": "O"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ]
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_DataSet.cs",
+    "guid": "926bd11c-44fc-4a6e-8b7c-ebcc7e7e82f9",
+    "name": "Data Set",
+    "nickName": "Data Set",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Values",
+        "nickName": "V"
+      },
+      {
+        "name": "Colors",
+        "nickName": "C"
+      },
+      {
+        "name": "Label",
+        "nickName": "L"
+      },
+      {
+        "name": "Title",
+        "nickName": "T"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Deconstruct.cs",
+    "guid": "ebff998c-6d61-4430-a0cd-9e5d447c81ba",
+    "name": "Deconstruct Document",
+    "nickName": "De Doc",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_Deconstruct.cs",
+    "guid": "902c28b8-3ec8-47c1-8152-aa2faaa7d152",
+    "name": "Deconstruct Page",
+    "nickName": "DePage",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Dock.cs",
+    "guid": "1e1aa4a1-326a-4c1f-b524-64930f49a4af",
+    "name": "Dock Block",
+    "nickName": "Dock Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_MetaData.cs",
+    "guid": "c3e354ad-50dc-42d0-ae7e-47201a854eec",
+    "name": "Document MetaData",
+    "nickName": "Meta",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Title",
+        "nickName": "T"
+      },
+      {
+        "name": "Subject",
+        "nickName": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Title",
+        "nickName": "T"
+      },
+      {
+        "name": "Subject",
+        "nickName": "S"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Options.cs",
+    "guid": "ae62da1a-7db5-4fc4-9434-442c2369462d",
+    "name": "Document Password",
+    "nickName": "Pass",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Layout",
+        "nickName": "L"
+      },
+      {
+        "name": "Page",
+        "nickName": "P"
+      },
+      {
+        "name": "Color Mode",
+        "nickName": "C"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Layout",
+        "nickName": "L"
+      },
+      {
+        "name": "Page",
+        "nickName": "P"
+      },
+      {
+        "name": "Color Mode",
+        "nickName": "C"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Password.cs",
+    "guid": "df83b610-7553-4857-8f86-defb4800a0ea",
+    "name": "Document Password",
+    "nickName": "Pass",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Password",
+        "nickName": "P"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Permissions.cs",
+    "guid": "0aaa0787-69f0-41a5-95a3-faf1fe694286",
+    "name": "Document Permissions",
+    "nickName": "Permissions",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Modify",
+        "nickName": "M"
+      },
+      {
+        "name": "Extract",
+        "nickName": "E"
+      },
+      {
+        "name": "Print",
+        "nickName": "P"
+      },
+      {
+        "name": "Optional Password",
+        "nickName": "O"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Modify",
+        "nickName": "M"
+      },
+      {
+        "name": "Extract",
+        "nickName": "E"
+      },
+      {
+        "name": "Print",
+        "nickName": "P"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Drawing.cs",
+    "guid": "a41fef5d-8f53-4866-a9ad-5dbf4db5cd64",
+    "name": "Drawing Block",
+    "nickName": "Drw Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      },
+      {
+        "name": "Fitting",
+        "nickName": "F"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_TableFast.cs",
+    "guid": "621a662a-fefb-45ab-997d-efc8d4259ebc",
+    "name": "Fast Table Block",
+    "nickName": "Fast Tbl Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Text Tree",
+        "nickName": "T"
+      },
+      {
+        "name": "Border Style",
+        "nickName": "B"
+      },
+      {
+        "name": "Heading ",
+        "nickName": "H"
+      },
+      {
+        "name": "Column Fitting",
+        "nickName": "F"
+      },
+      {
+        "name": "Alternating Color",
+        "nickName": "A"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block__GetBlocks.cs",
+    "guid": "ef1ea0e4-0378-462d-9ec2-58d579848650",
+    "name": "Get Blocks",
+    "nickName": "Get Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape__GetContents.cs",
+    "guid": "8632b176-4bfa-4df5-ac1e-4c6796c2bd17",
+    "name": "Get Shape Contents",
+    "nickName": "Contents",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      },
+      {
+        "name": "Location",
+        "nickName": "L"
+      },
+      {
+        "name": "Text",
+        "nickName": "T"
+      },
+      {
+        "name": "Geometry",
+        "nickName": "G"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape__GetShapes.cs",
+    "guid": "c8ef1e93-ef08-47aa-9fcf-3d26b57c716f",
+    "name": "Get Shapes",
+    "nickName": "Get Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Preview Blocks",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Group.cs",
+    "guid": "0eeb6ed0-a2fd-46cd-afd5-a92a78026099",
+    "name": "Group Block",
+    "nickName": "Group Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Html.cs",
+    "guid": "8e59f222-ccc5-46c0-a0f1-e0c9026bf65b",
+    "name": "HTML Block",
+    "nickName": "HTML Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "HTML",
+        "nickName": "H"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Image.cs",
+    "guid": "1bccdc38-d2d7-4076-b827-da6cce74b558",
+    "name": "Image Block",
+    "nickName": "Img Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Image",
+        "nickName": "I"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_Image.cs",
+    "guid": "e191f171-6313-4342-959c-db8ab28cdd0c",
+    "name": "Image Box Shape",
+    "nickName": "Img Box Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Image",
+        "nickName": "I"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_ImagePt.cs",
+    "guid": "d640f163-bd2c-449b-855f-014dbdef46ad",
+    "name": "Image Shape",
+    "nickName": "Img Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Image",
+        "nickName": "I"
+      },
+      {
+        "name": "Frame",
+        "nickName": "F"
+      },
+      {
+        "name": "Scale",
+        "nickName": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_FragmentsJoin.cs",
+    "guid": "b981432c-3b90-41c3-8895-a994b0c5af63",
+    "name": "Join Text Fragments",
+    "nickName": "Join Frag",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_Link.cs",
+    "guid": "413ae7fd-0b46-4c15-b17c-dffedbe7f6c9",
+    "name": "Link Shape",
+    "nickName": "Lnk Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Target",
+        "nickName": "T"
+      },
+      {
+        "name": "Link",
+        "nickName": "L"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_List.cs",
+    "guid": "0e512243-8cec-406b-bb6b-4a6f16e2456d",
+    "name": "List Block",
+    "nickName": "Lst Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      },
+      {
+        "name": "Bullet Type",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Markdown.cs",
+    "guid": "af7121bf-14ab-4dce-9f29-24882f729539",
+    "name": "Markdown Block",
+    "nickName": "Mkd Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Markdown",
+        "nickName": "M"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Pages/GH_Pdf_Page_Frames.cs",
+    "guid": "6ca6613e-f5a3-4f72-8737-fe6d8d116189",
+    "name": "Page Boundaries",
+    "nickName": "Boundaries",
+    "category": "PDF",
+    "subCategory": "Page",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Art Box",
+        "nickName": "A"
+      },
+      {
+        "name": "Bleed Box",
+        "nickName": "B"
+      },
+      {
+        "name": "Crop Box",
+        "nickName": "C"
+      },
+      {
+        "name": "Trim Box",
+        "nickName": "T"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Art Box",
+        "nickName": "A"
+      },
+      {
+        "name": "Bleed Box",
+        "nickName": "B"
+      },
+      {
+        "name": "Crop Box",
+        "nickName": "C"
+      },
+      {
+        "name": "Trim Box",
+        "nickName": "T"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_ChartPie.cs",
+    "guid": "f959474e-0a17-44d8-9ae3-dd921e5a94db",
+    "name": "Pie Chart Block",
+    "nickName": "Pie Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      },
+      {
+        "name": "Legend Location",
+        "nickName": "L"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_ChartPie.cs",
+    "guid": "8b9306b4-9ed2-4b81-bd7b-3b87c413e239",
+    "name": "Pie Chart Shape",
+    "nickName": "Pie Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      },
+      {
+        "name": "Legend Location",
+        "nickName": "L"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Preview.cs",
+    "guid": "d9baa330-a6ee-4e7a-9ddc-a4491d2be7af",
+    "name": "Preview PDF",
+    "nickName": "Prev PDF",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_DataSetFast.cs",
+    "guid": "d2fd6808-d0d9-49a1-8765-617f8c15b067",
+    "name": "Quick Data Set",
+    "nickName": "Data Set",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Data Tree",
+        "nickName": "N"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Resize.cs",
+    "guid": "c03a1734-83b7-4ec6-b437-5c37853319ea",
+    "name": "Resize Block",
+    "nickName": "Size Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      },
+      {
+        "name": "Width",
+        "nickName": "W"
+      },
+      {
+        "name": "Height",
+        "nickName": "H"
+      },
+      {
+        "name": "Justification",
+        "nickName": "J"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Documents/GH_Pdf_Doc_Save.cs",
+    "guid": "0633f5dc-c0a4-4399-9ead-ab58467cec2e",
+    "name": "Save Document",
+    "nickName": "Save Doc",
+    "category": "PDF",
+    "subCategory": "Doc",
+    "inputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      },
+      {
+        "name": "Directory",
+        "nickName": "D"
+      },
+      {
+        "name": "File Name",
+        "nickName": "N"
+      },
+      {
+        "name": "Save",
+        "nickName": "_S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "File Path",
+        "nickName": "P"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block__SetBlocks.cs",
+    "guid": "d9c71778-1a53-443f-a3d3-cdc72ec5c2b1",
+    "name": "Set Blocks",
+    "nickName": "Set Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Document",
+        "nickName": "Dc"
+      }
+    ]
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_Font.cs",
+    "guid": "12d4cdee-bdf3-4e1d-9bf0-efc493a8e190",
+    "name": "Set Font",
+    "nickName": "Set Font",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Family Name",
+        "nickName": "F"
+      },
+      {
+        "name": "Size",
+        "nickName": "S"
+      },
+      {
+        "name": "Color",
+        "nickName": "C"
+      },
+      {
+        "name": "Styling",
+        "nickName": "T"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Family Name",
+        "nickName": "F"
+      },
+      {
+        "name": "Size",
+        "nickName": "S"
+      },
+      {
+        "name": "Color",
+        "nickName": "C"
+      },
+      {
+        "name": "Styling",
+        "nickName": "T"
+      }
+    ]
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_FontPresets.cs",
+    "guid": "61b33e27-7ee2-40ba-a740-c02877df288a",
+    "name": "Set Font Preset",
+    "nickName": "Preset Font",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Font",
+        "nickName": "F"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      }
+    ]
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_Graphic.cs",
+    "guid": "54c11c7c-45a2-4900-b614-78c22243cd7f",
+    "name": "Set Graphics",
+    "nickName": "Set Graphics",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Fill Color",
+        "nickName": "F"
+      },
+      {
+        "name": "Stroke Color",
+        "nickName": "S"
+      },
+      {
+        "name": "Stroke Weight",
+        "nickName": "W"
+      },
+      {
+        "name": "Pattern",
+        "nickName": "P"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Fill Color",
+        "nickName": "F"
+      },
+      {
+        "name": "Stroke Color",
+        "nickName": "S"
+      },
+      {
+        "name": "Stroke Weight",
+        "nickName": "W"
+      },
+      {
+        "name": "Pattern",
+        "nickName": "P"
+      }
+    ]
+  },
+  {
+    "file": "Write/Formatting/GH_Pdf_Format_Paragraph.cs",
+    "guid": "1774216d-cb85-49a8-9888-467f58e84e1e",
+    "name": "Set Paragraph Format",
+    "nickName": "Set Paragraph",
+    "category": "PDF",
+    "subCategory": "Format",
+    "inputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Justification",
+        "nickName": "J"
+      },
+      {
+        "name": "Line Spacing",
+        "nickName": "S"
+      },
+      {
+        "name": "Spacing Before",
+        "nickName": "B"
+      },
+      {
+        "name": "Spacing After",
+        "nickName": "A"
+      },
+      {
+        "name": "Indentation Left",
+        "nickName": "L"
+      },
+      {
+        "name": "Indentation Right",
+        "nickName": "R"
+      },
+      {
+        "name": "Horizontal Border",
+        "nickName": "H"
+      },
+      {
+        "name": "Vertical Border",
+        "nickName": "V"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Element",
+        "nickName": "El"
+      },
+      {
+        "name": "Justification",
+        "nickName": "J"
+      },
+      {
+        "name": "Line Spacing",
+        "nickName": "S"
+      },
+      {
+        "name": "Spacing Before",
+        "nickName": "B"
+      },
+      {
+        "name": "Spacing After",
+        "nickName": "A"
+      },
+      {
+        "name": "Indentation Left",
+        "nickName": "L"
+      },
+      {
+        "name": "Indentation Right",
+        "nickName": "R"
+      },
+      {
+        "name": "Horizontal Borders",
+        "nickName": "H"
+      },
+      {
+        "name": "Vertical Borders",
+        "nickName": "V"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape__SetShapes.cs",
+    "guid": "7e649fc6-716b-4079-90eb-9fd203298a38",
+    "name": "Set Shapes",
+    "nickName": "Set Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      },
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Page",
+        "nickName": "Pg"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Table.cs",
+    "guid": "4614f54a-9978-4851-b2a1-ba52a911a29a",
+    "name": "Table Block",
+    "nickName": "Tbl Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "DataSet",
+        "nickName": "Ds"
+      },
+      {
+        "name": "Border Style",
+        "nickName": "B"
+      },
+      {
+        "name": "Heading ",
+        "nickName": "H"
+      },
+      {
+        "name": "Column Fitting",
+        "nickName": "F"
+      },
+      {
+        "name": "Alternating Color",
+        "nickName": "A"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Blocks/GH_Pdf_Block_Text.cs",
+    "guid": "4e9ff875-26bb-4365-a839-1fbccccae6bd",
+    "name": "Text Block",
+    "nickName": "Txt Blk",
+    "category": "PDF",
+    "subCategory": "Block",
+    "inputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      },
+      {
+        "name": "Formatting",
+        "nickName": "F"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Block",
+        "nickName": "Bk"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_TextBox.cs",
+    "guid": "7ecff30f-8500-4d86-96a1-e4effdcc81c2",
+    "name": "Text Box Shape",
+    "nickName": "Txt Box Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      },
+      {
+        "name": "Boundary",
+        "nickName": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  },
+  {
+    "file": "Write/Shapes/GH_Pdf_Shape_TextPt.cs",
+    "guid": "81f60353-b223-4c36-b46e-588733aadcac",
+    "name": "Text Line Shape",
+    "nickName": "Txt Shp",
+    "category": "PDF",
+    "subCategory": "Shape",
+    "inputs": [
+      {
+        "name": "Text Fragment",
+        "nickName": "Tx"
+      },
+      {
+        "name": "Frame",
+        "nickName": "F"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Shape",
+        "nickName": "Sh"
+      }
+    ]
+  }
+]
